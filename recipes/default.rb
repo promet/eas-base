@@ -20,12 +20,10 @@
 # add additional user
 include_recipe 'users'
 
-users_manage node['_user']['ops_group'] do
-  data_bag 'users'
-end
-
-users_manage node['_user']['apps_group'] do
-  data_bag 'users'
+node['_user']['all_users'].each do |user_group|
+  users_manage user_group do
+    data_bag 'users'
+  end
 end
 
 include_recipe 'sudo'
