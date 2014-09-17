@@ -1,0 +1,17 @@
+---
+driver:
+  name: vagrant
+  vagrantfile_erb: Vagrantfile.erb
+
+provisioner:
+  name: chef_solo
+
+platforms:
+  - name: ubuntu-14.04
+
+suites:
+  - name: default
+    data_bags_path: "test/integration/default/data_bags"
+    run_list:
+      - recipe[eas-base::default]
+    attributes:
