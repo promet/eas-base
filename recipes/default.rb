@@ -28,3 +28,20 @@ end
 
 include_recipe 'sudo'
 include_recipe 'postfix'
+
+directory '/etc/pki/tls/certs' do
+  recursive true
+  user 'root'
+  group 'root'
+  mode 00655
+  action :create
+end
+
+cookbook_file '/etc/pki/tls/certs/logstash.crt' do
+  source 'logstash.crt'
+  owner 'root'
+  group 'root'
+  mode 0644
+end
+
+include_recipe 'rsyslog::client'

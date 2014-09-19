@@ -2,7 +2,8 @@
 driver:
   name: vagrant
   vagrantfile_erb: Vagrantfile.erb
-
+  network:
+    - ["private_network", {ip: "33.33.33.11"}]
 provisioner:
   name: chef_solo
 
