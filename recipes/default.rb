@@ -18,6 +18,7 @@
 #
 
 # add additional user
+include_recipe 'apt'
 include_recipe 'users'
 
 node['_user']['all_users'].each do |user_group|

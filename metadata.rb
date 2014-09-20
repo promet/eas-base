@@ -7,6 +7,7 @@ long_description 'Installs/Configures eas-base'
 version          '0.1.0'
 
 
+depends 'apt'
 depends 'chef-solo-search'
 depends 'users'
 depends 'sudo'

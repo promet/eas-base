@@ -4,11 +4,10 @@ default['_user']['all_users'] = [ node['_user']['ops_group'], node['_user']['app
 
 default['authorization']['sudo']['groups'] = [node['_user']['ops_group']]
 default['authorization']['sudo']['passwordless'] = true
-default['authorization']['sudo']['users']  = ['ubuntu']
-default['authorization']['sudo']['users']  = ['vagrant']
+default['authorization']['sudo']['users']  = ['ubuntu', 'vagrant']
 
 # used for Chef Solo only
-normal['rsyslog']['server_ip'] = '33.33.33.10'
+default['rsyslog']['server_ip'] = '33.33.33.10'
 
 # logstash server port
 normal['rsyslog']['port'] = 5959
