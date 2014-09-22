@@ -1,11 +1,10 @@
-name             'eas-base'
-maintainer       'opscale'
+name 'eas-base'
+maintainer 'opscale'
 maintainer_email 'cookbooks@opscale.com'
-license          'Apache 2.0'
-description      'Installs/Configures eas-base'
+license 'Apache 2.0'
+description 'Installs/Configures eas-base'
 long_description 'Installs/Configures eas-base'
-version          '0.1.0'
-
+version '0.1.1'
 
 depends 'apt'
 depends 'chef-solo-search'
