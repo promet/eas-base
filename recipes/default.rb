@@ -54,3 +54,5 @@ cookbook_file '/etc/rsyslog.d/21-nginx.conf' do
   mode 0644
   notifies :restart, "service[#{node['rsyslog']['service_name']}]"
 end
+
+include_recipe 'nagios::client'
