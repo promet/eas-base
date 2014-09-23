@@ -1,10 +1,11 @@
-default['_user']['ops_group'] = 'ops'
-default['_user']['apps_group'] = 'apps'
-default['_user']['all_users'] = [node['_user']['ops_group'], node['_user']['apps_group']]
+default['_user']['ops_group'] = 'sysadmin'
+default['_user']['dev_group'] = 'dev'
+default['_user']['apps_group'] = 'www-data'
+default['_user']['all_users'] = [node['_user']['ops_group'],node['_user']['dev_group'], node['_user']['apps_group']]
 
 default['authorization']['sudo']['groups'] = [node['_user']['ops_group']]
 default['authorization']['sudo']['passwordless'] = true
-default['authorization']['sudo']['users']  = %w('ubuntu', 'vagrant')
+default['authorization']['sudo']['users']  = %w(ubuntu vagrant)
 
 # used for Chef Solo only
 default['rsyslog']['server_ip'] = '33.33.33.10'
