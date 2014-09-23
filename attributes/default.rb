@@ -1,7 +1,7 @@
 default['_user']['ops_group'] = 'sysadmin'
 default['_user']['dev_group'] = 'dev'
 default['_user']['apps_group'] = 'www-data'
-default['_user']['all_users'] = [node['_user']['ops_group'],node['_user']['dev_group'], node['_user']['apps_group']]
+default['_user']['all_users'] = [node['_user']['ops_group'], node['_user']['dev_group'], node['_user']['apps_group']]
 
 default['authorization']['sudo']['groups'] = [node['_user']['ops_group']]
 default['authorization']['sudo']['passwordless'] = true
@@ -14,3 +14,7 @@ default['rsyslog']['server_ip'] = '33.33.33.10'
 normal['rsyslog']['port'] = 5959
 normal['rsyslog']['enable_tls'] = true
 normal['rsyslog']['tls_ca_file'] = '/etc/pki/tls/certs/logstash.crt'
+
+normal['postfix']['main']['smtp_use_tls'] = 'yes'
+normal['postfix']['main']['smtp_tls_CAfile'] = node['rsyslog']['tls_ca_file']
+normal['postfix']['main']['smtp_tls_session_cache_database'] = 'btree:${data_directory}/smtp_scache'
