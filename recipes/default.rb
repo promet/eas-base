@@ -55,4 +55,17 @@ cookbook_file '/etc/rsyslog.d/21-nginx.conf' do
   notifies :restart, "service[#{node['rsyslog']['service_name']}]"
 end
 
-include_recipe 'nagios::client'
+include_recipe 'route53'
+
+route53_record "create a record" do
+  name "#{node.name }.eas.promethost.com"
+  value  node['ec2']['public_ipv4']
+  type  "A"
+  zone_id node['route53']['zone_id']
+  aws_access_key_id 'AKIAJ5K4NUXKNAEYX37Q'
+  aws_secret_access_key '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'
+  overwrite true
+  action :create
+end
+
+

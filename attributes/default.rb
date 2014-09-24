@@ -21,3 +21,8 @@ normal['postfix']['main']['smtp_tls_session_cache_database'] = 'btree:${data_dir
 
 normal['nagios']['server_role'] = 'nagios-server'
 normal['nagios']['multi_environment_monitoring'] = 'true'
+
+normal['apt']['compile_time_update'] = true
+
+normal['route53']['zone_id'] = 'Z17UO48EJODEL9'
+
