@@ -57,15 +57,16 @@ end
 
 include_recipe 'route53'
 
+dns_entry = node.name.to_s + '.' + node['eas-base']['hosted_domain'].to_s
+node.attribute?('ec2') ? dns_value = node['ec2']['public_ipv4'] : dns_value = node['ipaddress']
+
 route53_record "create a record" do
-  name "#{node.name }.eas.promethost.com"
-  value  node['ec2']['public_ipv4']
+  name dns_entry
+  value dns_value 
   type  "A"
-  zone_id node['route53']['zone_id']
+  zone_id node['eas-base']['zone_id']
   aws_access_key_id 'AKIAJ5K4NUXKNAEYX37Q'
   aws_secret_access_key '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'
   overwrite true
   action :create
 end
-
-

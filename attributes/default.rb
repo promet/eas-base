@@ -23,6 +23,6 @@ normal['nagios']['server_role'] = 'nagios-server'
 normal['nagios']['multi_environment_monitoring'] = 'true'
 
 normal['apt']['compile_time_update'] = true
-
-normal['route53']['zone_id'] = 'Z17UO48EJODEL9'
-
+# parameters used for route53
+default['eas-base']['hosted_domain'] = 'eas.promethost.com'
+default['eas-base']['zone_id'] = 'Z17UO48EJODEL9'
