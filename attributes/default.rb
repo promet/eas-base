@@ -26,3 +26,8 @@ normal['apt']['compile_time_update'] = true
 # parameters used for route53
 default['eas-base']['hosted_domain'] = 'eas.promethost.com'
 default['eas-base']['zone_id'] = 'Z17UO48EJODEL9'
+
+# chef-client attributes
+normal['chef_client']['init_style'] ='none'
+normal['chef_client']['cron']['minute'] = '*/20'
+normal['chef_client']['cron']['hour'] = '*'

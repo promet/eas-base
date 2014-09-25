@@ -19,7 +19,11 @@
 
 # add additional user
 include_recipe 'apt'
-include_recipe 'users'
+include_recipe 'git'
+include_recipe 'cron'
+include_recipe 'ntp'
+include_recipe 'logrotate'
+include_recipe 'vim'
 
 node['_user']['all_users'].each do |user_group|
   users_manage user_group do
@@ -55,6 +59,10 @@ cookbook_file '/etc/rsyslog.d/21-nginx.conf' do
   notifies :restart, "service[#{node['rsyslog']['service_name']}]"
 end
 
+include_recipe 'nrpe'
+include_recipe 'eas-base::_base_monitoring'
+
+
 include_recipe 'route53'
 
 dns_entry1 = node.name.to_s + '.' + node['eas-base']['hosted_domain'].to_s
@@ -83,3 +91,4 @@ route53_record "create a record" do
   action :create
 end
 
+include_recipe 'chef-client::cron'
