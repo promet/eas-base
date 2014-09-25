@@ -57,11 +57,12 @@ end
 
 include_recipe 'route53'
 
-dns_entry = node.name.to_s + '.' + node['eas-base']['hosted_domain'].to_s
+dns_entry1 = node.name.to_s + '.' + node['eas-base']['hosted_domain'].to_s
+dns_entry2 = node.name.to_s + '-dev.' + node['eas-base']['hosted_domain'].to_s
 node.attribute?('ec2') ? dns_value = node['ec2']['public_ipv4'] : dns_value = node['ipaddress']
 
 route53_record "create a record" do
-  name dns_entry
+  name dns_entry1
   value dns_value 
   type  "A"
   zone_id node['eas-base']['zone_id']
@@ -70,3 +71,15 @@ route53_record "create a record" do
   overwrite true
   action :create
 end
+
+route53_record "create a record" do
+  name dns_entry2
+  value dns_value 
+  type  "CNAME"
+  zone_id node['eas-base']['zone_id']
+  aws_access_key_id 'AKIAJ5K4NUXKNAEYX37Q'
+  aws_secret_access_key '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'
+  overwrite true
+  action :create
+end
+
