@@ -16,3 +16,6 @@ suites:
     run_list:
       - recipe[eas-base::default]
     attributes:
+      rsyslog:
+        server_ip: "33.33.33.10"
+

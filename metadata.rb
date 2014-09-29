@@ -4,7 +4,7 @@ maintainer_email 'cookbooks@opscale.com'
 license 'Apache 2.0'
 description 'Installs/Configures eas-base'
 long_description 'Installs/Configures eas-base'
-version '0.1.8'
+version '0.1.9'
 
 depends 'apt', '~> 2.6.0'
 depends 'chef-solo-search', '~> 0.5.1'
