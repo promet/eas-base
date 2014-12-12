@@ -40,3 +40,7 @@ include_recipe 'eas-base::_base_monitoring'
 
 include_recipe 'eas-base::_route53' if node.attribute?('ec2')
 include_recipe 'chef-client::cron'
+
+package 'zlib1g-dev' do
+  action :upgrade
+end
