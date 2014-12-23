@@ -17,10 +17,6 @@ default['eas-base']['ops_group'] = 'sysadmin'
 default['eas-base']['dev_group'] = 'dev'
 default['eas-base']['apps_group'] = 'www-data'
 default['eas-base']['all_users'] = [node['eas-base']['ops_group'], node['eas-base']['dev_group'], node['eas-base']['apps_group']]
-
-# parameters used for route53
-default['eas-base']['route53']['hosted_domain'] = 'eas.promethost.com'
-default['eas-base']['route53']['zone_id'] = 'Z17UO48EJODEL9'
 ```
 Mostly required for the route53 cookbook:
 ```
@@ -37,6 +33,12 @@ Essentials for postfix:
 normal['postfix']['main']['smtp_use_tls'] = 'yes'
 normal['postfix']['main']['smtp_tls_CAfile'] = node['rsyslog']['tls_ca_file']
 normal['postfix']['main']['smtp_tls_session_cache_database'] = 'btree:${data_directory}/smtp_scache'
+```
+Essentials for route53:
+```
+# parameters used for route53
+default['route53']['hosted_domain'] = 'eas.promethost.com'
+default['route53']['zone_id'] = 'Z17UO48EJODEL9'
 ```
 Setting up the connectivity to the logstash server (eas-base will search for a server with the role loghost by default):
 ```
